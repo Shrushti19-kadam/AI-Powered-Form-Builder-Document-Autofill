@@ -146,7 +146,9 @@ AI_Powered_Form_Builder/
 
 1. Clone the repository
 
-git clone <repository-url>
+1. Clone the repository
+
+git clone https://github.com/Shrushti19-kadam/AI-Powered-Form-Builder-Document-Autofill.git
 cd AI_Powered_Form_Builder
 
 2. Create a virtual environment
@@ -165,7 +167,7 @@ pip install -r requirements.txt
 Create a .env file in the project root:
 
 GEMINI_API_KEY=your_gemini_api_key
-GEMINI_MODEL=gemini-3.8-flash
+GEMINI_MODEL=gemini-3.6-flash
 
 Keep your actual API key private. Never commit .env to the repository.
 
