@@ -1,16 +1,18 @@
 AI-Powered Form Builder & Document Autofill
 
-A smart web application that allows users to create custom forms, upload documents, automatically extract relevant information using AI, review and edit the extracted values, and save the completed form.
+An AI-powered web application for creating dynamic forms and automatically filling them with information extracted from uploaded documents.
 
-Features
+The application allows users to build a custom form, upload a PDF or image, extract relevant information using AI, review and edit the results, validate the form, and export the completed data.
 
-Dynamic Form Builder
+✨ Features
+
+🧩 Dynamic Form Builder
 
 Create form fields dynamically at runtime.
 
-No code changes are required when the form structure changes.
+No source-code changes are required when the form structure changes.
 
-Supported field types:
+Supports:
 
 Single-line text
 
@@ -24,85 +26,101 @@ Dropdown
 
 Checkbox
 
-Mark fields as required or optional.
+Set fields as Required or Optional.
 
-Remove fields when they are no longer needed.
+Remove fields easily.
 
 Live form preview.
 
-Document Upload
+📄 Document Upload
 
-Supports:
+Supports PDF, PNG, JPG, and JPEG files.
 
-PDF
+Validates uploaded documents.
 
-PNG
+Displays clear success and error messages.
 
-JPG
+🤖 AI-Powered Document Extraction
 
-JPEG
+Uses Google Gemini for intelligent information extraction.
 
-Validates uploaded files and provides clear success or error messages.
+Extraction is completely schema-driven.
 
-AI-Powered Extraction
+The AI uses the fields created by the user as the extraction schema.
 
-Uses the user-created form fields as the extraction schema.
+Extracted values are automatically mapped to the corresponding form fields.
 
-Extracts matching information from uploaded documents.
-
-Dynamically maps extracted values to the appropriate form fields.
-
-Does not rely on hard-coded fields.
-
-Missing or uncertain information is left blank rather than guessed.
+Missing or uncertain information is left blank instead of being guessed.
 
 Provides extraction confidence information.
 
-Document Processing
+🔍 Document Processing
 
-Text-based PDFs are processed using PyMuPDF.
+Text-based PDFs are processed locally using PyMuPDF.
 
-Scanned or image-based PDFs can be processed as images.
+Scanned/image-based PDFs are processed using image extraction.
 
-Image documents can be processed directly.
+Image files can be processed directly.
 
-Review and Validation
+✏️ Review & Validation
 
-Users can review AI-extracted values.
+Review extracted information before saving.
 
-Extracted values can be edited manually.
+Edit any extracted value manually.
 
 Required fields are highlighted when empty.
 
-Basic field-type validation is performed before saving.
+Basic type validation is applied before saving.
 
-Save and Export
+Users remain in control of the final submitted information.
 
-Save completed form data.
+💾 Save & Export
 
-Download the completed form as a PDF.
+Save the completed form.
+
+Download the final form as PDF.
 
 Download structured form data as JSON.
 
-Tech Stack
+🛠️ Tech Stack
+
+Technology
+
+Purpose
 
 Python
 
+Application logic
+
 Streamlit
 
-Google Gemini API
+Web application UI
 
-Google GenAI Python SDK
+Google Gemini
+
+AI-powered extraction
+
+google-genai
+
+Gemini API integration
 
 PyMuPDF
 
+PDF text extraction and rendering
+
 Pillow
+
+Image processing
 
 ReportLab
 
+PDF generation
+
 python-dotenv
 
-Project Structure
+Environment variable management
+
+📁 Project Structure
 
 AI_Powered_Form_Builder/
 │
@@ -117,13 +135,14 @@ AI_Powered_Form_Builder/
 ├── .streamlit/
 │   └── config.toml
 │
-└── screenshots/
-    ├── 01_form_builder.png
-    ├── 02_document_upload.png
-    ├── 03_ai_extraction.png
-    └── 04_review_save.png
+└── Screenshots/
+    ├── AI_Extraction.png
+    ├── Downloaded_PDF.png
+    ├── Saved_PDF.png
+    ├── Upload_Resume.png
+    └── form_builder.png
 
-Installation
+🚀 Installation & Setup
 
 1. Clone the repository
 
@@ -132,7 +151,7 @@ cd AI_Powered_Form_Builder
 
 2. Create a virtual environment
 
-For Windows:
+Windows:
 
 python -m venv .venv
 .venv\Scripts\activate
@@ -141,87 +160,106 @@ python -m venv .venv
 
 pip install -r requirements.txt
 
-4. Configure the API key
+4. Configure Gemini API
 
 Create a .env file in the project root:
 
 GEMINI_API_KEY=your_gemini_api_key
-
-Optional model configuration:
-
 GEMINI_MODEL=gemini-3.8-flash
 
-Keep the .env file private and do not commit it to GitHub.
+Keep your actual API key private. Never commit .env to the repository.
 
 5. Run the application
 
 streamlit run app.py
 
-The application will open at the local Streamlit URL displayed in the terminal.
+The application will open using the local Streamlit URL displayed in the terminal.
 
-How It Works
+🔄 Application Workflow
 
-The user creates a form by adding fields dynamically.
+Create Form
+     ↓
+Add Dynamic Fields
+     ↓
+Upload Document
+     ↓
+AI Extraction
+     ↓
+Autofill Form
+     ↓
+Review & Edit
+     ↓
+Validate Required Fields
+     ↓
+Save & Export
 
-Each field has a label, type, and required/optional setting.
+Step-by-step
 
-The user uploads a document.
+Create the required form fields.
 
-The application processes the document.
+Select the field type for each field.
 
-Gemini AI extracts information according to the user-defined form schema.
+Choose whether each field is required or optional.
 
-Extracted values are displayed in the form.
+Upload a PDF or image document.
 
-The user reviews and edits the values if necessary.
+Click Extract & Autofill.
 
-Required fields are validated.
+Review the extracted information.
 
-The completed form can be saved and exported.
+Edit incorrect or missing values.
 
-Schema-Driven Extraction
+Complete all required fields.
 
-The application separates the form schema from the extraction logic.
+Save the final form.
 
-For example, a user can create:
+Download the PDF or JSON output.
 
-Candidate Name       → Single-line text
-Email Address        → Single-line text
-Skills               → Multi-line text
+🧠 Schema-Driven Architecture
+
+The application keeps the form schema separate from the AI extraction logic.
+
+For example:
+
+Candidate Name       → Text
+Email Address        → Text
+Skills               → Multi-line Text
 Years of Experience  → Number
 
-The same application can also be configured for another use case:
+The same application can be configured for a completely different form:
 
-Invoice Number → Single-line text
+Invoice Number → Text
 Invoice Date   → Date
 Amount         → Number
 Paid           → Checkbox
 
-The extraction logic does not need to be modified when the form fields change.
+No changes to the extraction code are required when the form fields change.
 
-Missing and Uncertain Values
+🛡️ Handling Missing & Uncertain Information
 
-The application follows a conservative extraction approach:
+The application follows a conservative extraction strategy:
 
-Missing information is left blank.
+Missing values remain blank.
 
-Uncertain information is not guessed.
+Uncertain values are not guessed.
 
 Required empty fields are identified during validation.
 
-Users can manually correct extracted values.
+Users can manually correct extracted information.
 
 Invalid values are not silently replaced with guessed values.
 
-Error Handling
+This helps keep the final form reviewable and reliable.
 
-The application handles common situations such as:
+⚠️ Error Handling
+
+The application handles common cases such as:
 
 Unsupported file types
 
 Invalid or corrupt documents
 
-Attempting extraction before creating form fields
+Extraction attempted before creating fields
 
 Missing required values
 
@@ -231,9 +269,9 @@ Temporary AI service failures
 
 Documents with little or no extractable text
 
-Transient AI service failures are retried, and supported fallback models can be used when necessary.
+Transient AI service failures are retried, with supported fallback models available when necessary.
 
-Screenshots
+📸 Screenshots
 
 Dynamic Form Builder
 
@@ -247,25 +285,17 @@ AI Extraction
 
 
 
-Review and Save
+Saved Form
 
 
 
-Design Considerations
+Downloaded PDF
 
-The form schema is completely user-driven.
 
-AI extraction is treated as a draft and should be reviewed by the user.
 
-The application prioritizes accuracy and avoids guessing uncertain information.
+🔐 Security
 
-Local PDF text extraction reduces unnecessary document processing.
-
-Scanned documents are handled using image-based extraction.
-
-Security
-
-API credentials are stored in environment variables.
+API credentials are stored using environment variables.
 
 .env is excluded from version control.
 
@@ -273,13 +303,13 @@ API keys should never be committed to a public repository.
 
 Uploaded documents are used for the application workflow and are not intentionally stored as permanent application data.
 
-Future Improvements
+🔮 Future Improvements
 
-Drag-and-drop field ordering
+Drag-and-drop field reordering
 
 Reusable form templates
 
-Import and export of form schemas
+Form schema import/export
 
 More detailed field-level confidence indicators
 
@@ -288,3 +318,23 @@ Database-backed submissions
 Authentication and multi-user support
 
 Additional document formats
+
+Cloud deployment
+
+📌 Key Highlights
+
+Fully dynamic form creation
+
+Schema-driven AI extraction
+
+PDF and image document support
+
+AI-assisted autofill
+
+Human review and editing
+
+Required-field validation
+
+PDF and JSON export
+
+Error handling and fallback extraction
